@@ -1,3 +1,7 @@
+:root {
+  --ff-primary: "VT323", monospace;
+}
+
 *,
 *::before,
 *::after {
@@ -15,6 +19,10 @@ button {
 /* Remove the default outline from reasonly inputs */
 input[readonly]:focus {
   outline: none;
+}
+
+body {
+  font-family: var(--ff-primary);
 }
 
 /* UTILITY CLASSES */

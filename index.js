@@ -2,23 +2,23 @@ let firstNumber = 0;
 let secondNumber = 0;
 let operator = "";
 
-const add = function(num1, num2) {
+const add = function (num1, num2) {
   return num1 + num2;
 };
 
-const substract = function(num1, num2) {
+const substract = function (num1, num2) {
   return num1 - num2;
 };
 
-const mulitply = function(num1, num2) {
+const mulitply = function (num1, num2) {
   return num1 * num2;
 };
 
-const divide = function(num1, num2) {
+const divide = function (num1, num2) {
   return num1 / num2;
 };
 
-const operate = function(num1, num2, operator) {
+const operate = function (num1, num2, operator) {
   let result = null;
 
   switch (operator) {
