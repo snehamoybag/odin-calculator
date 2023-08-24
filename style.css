@@ -58,12 +58,20 @@ body {
 .calculator__buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 50px;
   grid-template-areas:
     "clear clear undo divide"
     "num7 num8 num9 multiply"
     "num4 num5 num6 substract"
     "num1 num2 num3 add"
     "point num0 equal equal";
+  gap: 0.5em;
+  margin-top: 1rem;
+}
+
+.calculator__buttons > button {
+  border: 1px solid inset;
+  border-radius: 5px;
 }
 
 .calculator__button_clear {

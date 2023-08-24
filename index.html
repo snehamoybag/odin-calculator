@@ -19,14 +19,14 @@
   <header class="header"></header>
   <main class="main">
     <div class="calculator">
-      <div id="display" class="calculator__display">
-        <label for="#equation" class="calculator__display_label">
+      <div class="calculator__display">
+        <label for="display-equation" class="calculator__display_label">
           <span class="sr-only">Equations</span>
-          <input type="text" id="equation" class="calculator__display_equation" readonly value="1+2*3" />
+          <input type="text" id="display-equation" class="calculator__display_equation" readonly />
         </label>
-        <label for="result" class="calculator__display_label">
+        <label for="display-result" class="calculator__display_label">
           <span class="sr-only">Result</span>
-          <input type="text" id="result" class="calculator__display_result" readonly value="1" />
+          <input type="text" id="display-result" class="calculator__display_result" readonly />
         </label>
       </div>
       <div id="buttons" class="calculator__buttons">
@@ -34,32 +34,52 @@
         <button id="undo" class="calculator__button_undo">
           <span class="sr-only">Undo</span>&#8592;
         </button>
-        <button id="divide" class="calculator__button_divide">
+        <button data-type="operator" value="÷" class="calculator__button_divide">
           <span class="sr-only">Divide</span>&#247;
         </button>
-        <button id="multiply" class="calculator__button_multiply">
+        <button data-type="operator" value="×" class="calculator__button_multiply">
           <span class="sr-only">Multiply</span>&#215;
         </button>
-        <button id="substract" class="calculator__button_substract">
+        <button data-type="operator" value="-" class="calculator__button_substract">
           <span class="sr-only">Substract</span>&#8722;
         </button>
-        <button id="add" class="calculator__button_add">
+        <button data-type="operator" value="+" class="calculator__button_add">
           <span class="sr-only">Add</span>&#43;
         </button>
         <button id="equal" class="calculator__button_equal">
           <span class="sr-only">Equal</span>&#61;
         </button>
-        <button id="number1" class="calculator__button_num1">1</button>
-        <button id="number2" class="calculator__button_num2">2</button>
-        <button id="number3" class="calculator__button_num3">3</button>
-        <button id="number4" class="calculator__button_num4">4</button>
-        <button id="number5" class="calculator__button_num5">5</button>
-        <button id="number6" class="calculator__button_num6">6</button>
-        <button id="number7" class="calculator__button_num7">7</button>
-        <button id="number8" class="calculator__button_num8">8</button>
-        <button id="number9" class="calculator__button_num9">9</button>
-        <button id="number0" class="calculator__button_num0">0</button>
-        <button id="point" class="calculator__button_point">
+        <button data-type="number" value="1" class="calculator__button_num1">
+          1
+        </button>
+        <button data-type="number" value="2" class="calculator__button_num2">
+          2
+        </button>
+        <button data-type="number" value="3" class="calculator__button_num3">
+          3
+        </button>
+        <button data-type="number" value="4" class="calculator__button_num4">
+          4
+        </button>
+        <button data-type="number" value="5" class="calculator__button_num5">
+          5
+        </button>
+        <button data-type="number" value="6" class="calculator__button_num6">
+          6
+        </button>
+        <button data-type="number" value="7" class="calculator__button_num7">
+          7
+        </button>
+        <button data-type="number" value="8" class="calculator__button_num8">
+          8
+        </button>
+        <button data-type="number" value="9" class="calculator__button_num9">
+          9
+        </button>
+        <button data-type="number" value="0" class="calculator__button_num0">
+          0
+        </button>
+        <button data-type="number" value="." class="calculator__button_point">
           <span class="sr-only">Point</span>&#8901;
         </button>
         <!-- <button id="percent"> -->
