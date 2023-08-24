@@ -2,7 +2,9 @@ function DisplayConstructor() {
   const equation = document.querySelector("#display-equation");
   const result = document.querySelector("#display-result");
 
-  this.updateEquation = (value) => (equation.value += value);
+  this.updateEquation = (value) => {
+    equation.value = value === "" ? value : equation.value + value;
+  };
   this.getEquation = () => equation.value;
 
   this.updateResult = (value) => (result.value = value);
@@ -55,7 +57,7 @@ const buttons = {
   operators: document.querySelectorAll("button[data-type=operator]"),
   equal: document.querySelector("#equal"),
   undo: document.querySelector("#undo"),
-  clear: document.querySelector("#back"),
+  clear: document.querySelector("#clear"),
 };
 
 // update display equation on button clicks
@@ -66,3 +68,5 @@ buttons.numbers.forEach((button) => {
 buttons.operators.forEach((button) => {
   button.addEventListener("click", () => display.updateEquation(button.value));
 });
+
+buttons.clear.addEventListener("click", () => display.updateEquation(""));
