@@ -69,4 +69,11 @@ buttons.operators.forEach((button) => {
   button.addEventListener("click", () => display.updateEquation(button.value));
 });
 
+buttons.undo.addEventListener("click", () => {
+  const currentEquation = display.getEquation();
+  const prevEquation = currentEquation.slice(0, -1); // remove last item from equation
+  display.updateEquation(""); // clear everything
+  display.updateEquation(prevEquation); // sets it to previous equation
+});
+
 buttons.clear.addEventListener("click", () => display.updateEquation(""));
