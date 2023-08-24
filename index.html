@@ -22,36 +22,46 @@
       <div id="display" class="calculator__display">
         <label for="#equation" class="calculator__display_label">
           <span class="sr-only">Equations</span>
-          <input type="text" id="equation" class="calculator__display_equation" readonly />
+          <input type="text" id="equation" class="calculator__display_equation" readonly value="1+2*3" />
         </label>
         <label for="result" class="calculator__display_label">
           <span class="sr-only">Result</span>
-          <input type="text" id="result" class="calculator__display_result" readonly />
+          <input type="text" id="result" class="calculator__display_result" readonly value="1" />
         </label>
       </div>
       <div id="buttons" class="calculator__buttons">
-        <button id="clear">Clear</button>
-        <button id="undo"><span class="sr-only">Undo</span>&#8592;</button>
-        <button id="divide"><span class="sr-only">Divide</span>&#247;</button>
-        <button id="multiply">
+        <button id="clear" class="calculator__button_clear">Clear</button>
+        <button id="undo" class="calculator__button_undo">
+          <span class="sr-only">Undo</span>&#8592;
+        </button>
+        <button id="divide" class="calculator__button_divide">
+          <span class="sr-only">Divide</span>&#247;
+        </button>
+        <button id="multiply" class="calculator__button_multiply">
           <span class="sr-only">Multiply</span>&#215;
         </button>
-        <button id="substract">
+        <button id="substract" class="calculator__button_substract">
           <span class="sr-only">Substract</span>&#8722;
         </button>
-        <button id="add"><span class="sr-only">Add</span>&#43;</button>
-        <button id="equal"><span class="sr-only">Equal</span>&#61;</button>
-        <button id="number1">1</button>
-        <button id="number2">2</button>
-        <button id="number3">3</button>
-        <button id="number4">4</button>
-        <button id="number5">5</button>
-        <button id="number6">6</button>
-        <button id="number7">7</button>
-        <button id="number8">8</button>
-        <button id="number9">9</button>
-        <button id="number0">0</button>
-        <button id="point"><span class="sr-only">Point</span>&#8901;</button>
+        <button id="add" class="calculator__button_add">
+          <span class="sr-only">Add</span>&#43;
+        </button>
+        <button id="equal" class="calculator__button_equal">
+          <span class="sr-only">Equal</span>&#61;
+        </button>
+        <button id="number1" class="calculator__button_num1">1</button>
+        <button id="number2" class="calculator__button_num2">2</button>
+        <button id="number3" class="calculator__button_num3">3</button>
+        <button id="number4" class="calculator__button_num4">4</button>
+        <button id="number5" class="calculator__button_num5">5</button>
+        <button id="number6" class="calculator__button_num6">6</button>
+        <button id="number7" class="calculator__button_num7">7</button>
+        <button id="number8" class="calculator__button_num8">8</button>
+        <button id="number9" class="calculator__button_num9">9</button>
+        <button id="number0" class="calculator__button_num0">0</button>
+        <button id="point" class="calculator__button_point">
+          <span class="sr-only">Point</span>&#8901;
+        </button>
         <!-- <button id="percent"> -->
         <!--   <span class="sr-only">Percent</span>&#37; -->
         <!-- </button> -->

@@ -25,6 +25,119 @@ body {
   font-family: var(--ff-primary);
 }
 
+.main {
+  padding: 3em 0;
+}
+
+.calculator {
+  width: 90%;
+  max-width: 400px;
+  padding: 1em;
+  border: 2px solid;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.calculator__display {
+  min-height: 100px;
+  padding: 0.5em;
+  border: 1px solid;
+  border-radius: 10px;
+  display: grid; /* makes inner contents stretch */
+}
+
+.calculator__display_equation,
+.calculator__display_result {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  border-radius: 0;
+  border: none;
+}
+
+.calculator__buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "clear clear undo divide"
+    "num7 num8 num9 multiply"
+    "num4 num5 num6 substract"
+    "num1 num2 num3 add"
+    "point num0 equal equal";
+}
+
+.calculator__button_clear {
+  grid-area: clear;
+}
+
+.calculator__button_undo {
+  grid-area: undo;
+}
+
+.calculator__button_divide {
+  grid-area: divide;
+}
+
+.calculator__button_multiply {
+  grid-area: multiply;
+}
+
+.calculator__button_substract {
+  grid-area: substract;
+}
+
+.calculator__button_add {
+  grid-area: add;
+}
+
+.calculator__button_equal {
+  grid-area: equal;
+}
+
+.calculator__button_num1 {
+  grid-area: num1;
+}
+
+.calculator__button_num2 {
+  grid-area: num2;
+}
+
+.calculator__button_num3 {
+  grid-area: num3;
+}
+
+.calculator__button_num4 {
+  grid-area: num4;
+}
+
+.calculator__button_num5 {
+  grid-area: num5;
+}
+
+.calculator__button_num6 {
+  grid-area: num6;
+}
+
+.calculator__button_num7 {
+  grid-area: num7;
+}
+
+.calculator__button_num8 {
+  grid-area: num8;
+}
+
+.calculator__button_num9 {
+  grid-area: num9;
+}
+
+.calculator__button_num0 {
+  grid-area: num0;
+}
+
+.calculator__button_point {
+  grid-area: point;
+}
+
 /* UTILITY CLASSES */
 /* Hiding class, making content visible only to screen readers but not visually */
 /* "sr" meaning "screen-reader" */
