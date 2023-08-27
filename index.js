@@ -1,13 +1,23 @@
+let leftSideNumberStr = "";
+let rightSideNumberStr = "";
+let operator;
+let isModeLeftSideNumber = true;
+
 function DisplayConstructor() {
-  const equation = document.querySelector("#display-equation");
-  const result = document.querySelector("#display-result");
+  this.equationEl = document.querySelector("#display-equation");
+  this.getEquation = () => this.equationEl.value;
+  this.setEquation = (value) => {
+    this.equationEl.value = value;
+  };
+  this.updateEquation = (value) => {
+    this.equationEl.value = this.equationEl.value + value;
+  };
 
-  this.getEquation = () => equation.value;
-  this.setEquation = (value) => (equation.value = value);
-  this.updateEquation = (value) => (equation.value = equation.value + value);
-
-  this.getResult = () => result.value;
-  this.updateResult = (value) => (result.value = value);
+  this.resultEl = document.querySelector("#display-result");
+  this.getResult = () => this.resultEl.value;
+  this.setResult = (value) => {
+    this.resultEl.value = value;
+  };
 }
 
 const display = new DisplayConstructor();
@@ -37,8 +47,13 @@ const divide = function(num1, num2) {
 };
 
 const operate = function(num1, num2, operator) {
-  let result = null;
+  // turn to number just in case a string is passed
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
 
+  if (isNaN(num1) || isNaN(num2) || !operator) return "Error";
+
+  let result = null;
   switch (operator) {
     case "+":
       result = add(num1, num2);
@@ -46,36 +61,26 @@ const operate = function(num1, num2, operator) {
     case "-":
       result = substract(num1, num2);
       break;
-    case "*":
+    case "×":
       result = mulitply(num1, num2);
       break;
-    case "/":
+    case "÷":
       result = divide(num1, num2);
       break;
     default:
-      result = "Error!";
+      result = "Error";
   }
-
   return result;
 };
 
-// update display equation on button clicks
+// click events
 buttons.numbers.forEach((button) => {
-  button.addEventListener("click", () => display.updateEquation(button.value));
+  button.addEventListener("click", () => { });
 });
 
 buttons.operators.forEach((button) => {
   button.addEventListener("click", () => {
-    const currentEquation = display.getEquation();
-    const nonOperatorReg = /[0-9\.]/;
-
-    // replace operator if user press operator buttons consecutively
-    if (!nonOperatorReg.test(currentEquation[currentEquation.length - 1])) {
-      const updatedEquation = currentEquation.slice(0, -1).concat(button.value);
-      display.setEquation(updatedEquation);
-    } else {
-      display.updateEquation(button.value);
-    }
+    display.updateEquation(button.value);
   });
 });
 
@@ -86,3 +91,7 @@ buttons.undo.addEventListener("click", () => {
 });
 
 buttons.clear.addEventListener("click", () => display.setEquation(""));
+
+buttons.equal.addEventListener("click", () => {
+  console.log("equal");
+});
