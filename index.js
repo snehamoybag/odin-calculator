@@ -57,12 +57,20 @@ function Caluclator() {
     currentOperand = currentOperand.toString() + num.toString();
   };
 
-  this.appendOperator = (currentOperator) => {
-    if (currentOperand === "") return;
+  this.appendOperator = (operatorValue) => {
+    if (currentOperand === "" && operatorValue === "-") {
+      currentOperand = operatorValue;
+      return;
+    } else if (currentOperand === "" && operatorValue !== "-") {
+      return;
+    }
+
+    if (currentOperand === "." || currentOperand === "-") return;
+
     if (prevOperand !== "") {
       this.operate();
     }
-    operator = currentOperator;
+    operator = operatorValue;
     prevOperand = currentOperand;
     currentOperand = "";
   };
