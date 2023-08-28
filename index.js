@@ -11,6 +11,11 @@ function Caluclator() {
 
     if (isNaN(leftSideOperandNum) || isNaN(rigthSideOperandNum)) return;
 
+    if (operator === "÷" && rigthSideOperandNum === 0) {
+      alert("Error! 0 cannot be the divisor.");
+      return;
+    }
+
     let result;
     switch (operator) {
       case "+":
@@ -23,15 +28,7 @@ function Caluclator() {
         result = leftSideOperandNum * rigthSideOperandNum;
         break;
       case "÷":
-        if (leftSideOperandNum === 0 && rigthSideOperandNum === 0) {
-          alert("Error! 0 can not be devided by 0");
-          result = 0; // 0/0 = NaN
-        } else if (leftSideOperandNum !== 0 && rigthSideOperandNum === 0) {
-          alert("Error! 0 cannot be the divisor.");
-          result = 0; // 1/0 = infinity
-        } else {
-          result = leftSideOperandNum / rigthSideOperandNum;
-        }
+        result = leftSideOperandNum / rigthSideOperandNum;
         break;
       default:
         return;
@@ -117,8 +114,11 @@ buttons.operators.forEach((button) => {
 });
 
 buttons.equal.addEventListener("click", () => {
+  const resultEl = document.querySelector("#current-equation");
   calculator.operate();
   calculator.updateDisplay();
+  if (resultEl.value === "") return;
+  resultEl.focus(); // switches focus to the result
 });
 
 buttons.delete.addEventListener("click", () => {
