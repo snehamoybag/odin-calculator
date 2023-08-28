@@ -44,6 +44,8 @@ function Caluclator() {
     currentEquationEl.value = currentOperand;
     if (operator !== "") {
       prevEquationEl.value = prevOperand + operator;
+    } else {
+      prevEquationEl.value = prevOperand;
     }
   };
 
@@ -97,5 +99,10 @@ buttons.operators.forEach((button) => {
 
 buttons.equal.addEventListener("click", () => {
   calculator.operate();
+  calculator.updateDisplay();
+});
+
+buttons.allClear.addEventListener("click", () => {
+  calculator.allClear();
   calculator.updateDisplay();
 });
