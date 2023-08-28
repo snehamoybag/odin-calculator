@@ -1,97 +1,101 @@
-let leftSideNumberStr = "";
-let rightSideNumberStr = "";
-let operator;
-let isModeLeftSideNumber = true;
+function Caluclator() {
+  let prevEquationEl = document.querySelector("#prev-equation");
+  let currentEquationEl = document.querySelector("#current-equation");
+  let prevOperand = "";
+  let currentOperand = "";
+  let operator = "";
 
-function DisplayConstructor() {
-  this.equationEl = document.querySelector("#display-equation");
-  this.getEquation = () => this.equationEl.value;
-  this.setEquation = (value) => {
-    this.equationEl.value = value;
-  };
-  this.updateEquation = (value) => {
-    this.equationEl.value = this.equationEl.value + value;
+  this.operate = () => {
+    const leftSideOperandNum = parseFloat(prevOperand);
+    const rigthSideOperandNum = parseFloat(currentOperand);
+
+    if (isNaN(leftSideOperandNum) || isNaN(rigthSideOperandNum)) return;
+
+    let result;
+    switch (operator) {
+      case "+":
+        result = leftSideOperandNum + rigthSideOperandNum;
+        break;
+      case "-":
+        result = leftSideOperandNum - rigthSideOperandNum;
+        break;
+      case "×":
+        result = leftSideOperandNum * rigthSideOperandNum;
+        break;
+      case "÷":
+        if (leftSideOperandNum === 0 && rigthSideOperandNum === 0) {
+          result = 0; // 0/0 = NaN
+        } else if (leftSideOperandNum === 1 && rigthSideOperandNum === 0) {
+          result = 0; // 1/0 = infinity
+        } else {
+          result = leftSideOperandNum / rigthSideOperandNum;
+        }
+        break;
+      default:
+        return;
+    }
+
+    currentOperand = result;
+    prevOperand = "";
+    operator = "";
   };
 
-  this.resultEl = document.querySelector("#display-result");
-  this.getResult = () => this.resultEl.value;
-  this.setResult = (value) => {
-    this.resultEl.value = value;
+  this.updateDisplay = () => {
+    currentEquationEl.value = currentOperand;
+    if (operator !== "") {
+      prevEquationEl.value = prevOperand + operator;
+    }
+  };
+
+  this.appendNumber = (num) => {
+    if (num === "." && currentOperand.includes(num)) return;
+    currentOperand = currentOperand.toString() + num.toString();
+  };
+
+  this.appendOperator = (currentOperator) => {
+    if (currentOperand === "") return;
+    if (prevOperand !== "") {
+      this.operate();
+    }
+    operator = currentOperator;
+    prevOperand = currentOperand;
+    currentOperand = "";
+  };
+
+  this.delete = () => { };
+
+  this.allClear = () => {
+    currentOperand = "";
+    prevOperand = "";
+    operator = "";
   };
 }
-
-const display = new DisplayConstructor();
 
 const buttons = {
   numbers: document.querySelectorAll("button[data-type=number]"),
   operators: document.querySelectorAll("button[data-type=operator]"),
   equal: document.querySelector("#equal"),
-  undo: document.querySelector("#undo"),
-  clear: document.querySelector("#clear"),
+  allClear: document.querySelector("#all-clear"),
+  delete: document.querySelector("#delete"),
 };
 
-const add = function(num1, num2) {
-  return num1 + num2;
-};
+const calculator = new Caluclator();
 
-const substract = function(num1, num2) {
-  return num1 - num2;
-};
-
-const mulitply = function(num1, num2) {
-  return num1 * num2;
-};
-
-const divide = function(num1, num2) {
-  return num1 / num2;
-};
-
-const operate = function(num1, num2, operator) {
-  // turn to number just in case a string is passed
-  num1 = parseInt(num1);
-  num2 = parseInt(num2);
-
-  if (isNaN(num1) || isNaN(num2) || !operator) return "Error";
-
-  let result = null;
-  switch (operator) {
-    case "+":
-      result = add(num1, num2);
-      break;
-    case "-":
-      result = substract(num1, num2);
-      break;
-    case "×":
-      result = mulitply(num1, num2);
-      break;
-    case "÷":
-      result = divide(num1, num2);
-      break;
-    default:
-      result = "Error";
-  }
-  return result;
-};
-
-// click events
 buttons.numbers.forEach((button) => {
-  button.addEventListener("click", () => { });
+  button.addEventListener("click", () => {
+    calculator.appendNumber(button.value);
+    calculator.updateDisplay();
+  });
 });
 
 buttons.operators.forEach((button) => {
   button.addEventListener("click", () => {
-    display.updateEquation(button.value);
+    calculator.appendOperator(button.value);
+    calculator.updateDisplay();
   });
 });
 
-buttons.undo.addEventListener("click", () => {
-  const currentEquation = display.getEquation();
-  const prevEquation = currentEquation.slice(0, -1); // remove last item from equation
-  display.setEquation(prevEquation);
-});
-
-buttons.clear.addEventListener("click", () => display.setEquation(""));
-
 buttons.equal.addEventListener("click", () => {
-  console.log("equal");
+  calculator.operate();
+  calculator.updateDisplay();
 });
