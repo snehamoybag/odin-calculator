@@ -24,8 +24,10 @@ function Caluclator() {
         break;
       case "÷":
         if (leftSideOperandNum === 0 && rigthSideOperandNum === 0) {
+          alert("Error! 0 can not be devided by 0");
           result = 0; // 0/0 = NaN
-        } else if (leftSideOperandNum === 1 && rigthSideOperandNum === 0) {
+        } else if (leftSideOperandNum !== 0 && rigthSideOperandNum === 0) {
+          alert("Error! 0 cannot be the divisor.");
           result = 0; // 1/0 = infinity
         } else {
           result = leftSideOperandNum / rigthSideOperandNum;
