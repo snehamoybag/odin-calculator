@@ -1,5 +1,9 @@
 :root {
   --ff-primary: "VT323", monospace;
+
+  --fs-400: 1.25rem;
+  --fs-600: 1.5rem;
+  --fs-700: 2rem;
 }
 
 *,
@@ -22,37 +26,57 @@ input[readonly]:focus {
 }
 
 body {
+  background-color: hsla(340, 70%, 70%, 1);
   font-family: var(--ff-primary);
 }
 
 .main {
+  min-height: 100vh;
   padding: 3em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .calculator {
+  background-color: hsla(0, 0%, 20%, 1);
   width: 90%;
   max-width: 400px;
   padding: 1em;
   border: 2px solid;
   border-radius: 20px;
+  box-shadow: 10px 10px 10px hsla(0, 0%, 0%, 0.2);
   margin: 0 auto;
 }
 
 .calculator__display {
+  background-color: hsla(81, 12%, 67%, 1);
   min-height: 100px;
   padding: 0.5em;
   border: 1px solid;
   border-radius: 10px;
+  box-shadow: 0 0 5px 3px hsla(81, 12%, 35%, 0.5) inset;
   display: grid; /* makes inner contents stretch */
 }
 
-.calculator__display_equation,
-.calculator__display_result {
+.calculator__display_prev-equation,
+.calculator__display_current-equation {
+  background-color: transparent;
   width: 100%;
   height: 100%;
   text-align: right;
   border-radius: 0;
   border: none;
+  outline: none;
+}
+
+.calculator__display_prev-equation {
+  font-size: var(--fs-400);
+  opacity: 0.75;
+}
+
+.calculator__display_current-equation {
+  font-size: var(--fs-700);
 }
 
 .calculator__buttons {
@@ -70,8 +94,30 @@ body {
 }
 
 .calculator__buttons > button {
-  border: 1px solid inset;
+  background-color: hsla(0, 0%, 27%, 1);
+  color: hsla(0, 0%, 100%);
+  font-size: var(--fs-600);
+  border: 1px solid hsla(0, 0%, 5%, 1);
   border-radius: 5px;
+  box-shadow: 1px 1px 5px hsla(0, 0%, 0%, 0.25);
+}
+
+.calculator__buttons > button[data-type="number"] {
+  background-color: hsla(0, 0%, 40%, 1);
+}
+
+.calculator__buttons > #equal {
+  background-color: hsla(23, 100%, 59%, 1);
+}
+
+.calculator__buttons > button:hover {
+  cursor: pointer;
+}
+
+.calculator__buttons > button:active {
+  opacity: 0.7;
+  box-shadow: none;
+  transform: scale(0.97);
 }
 
 .calculator__button_clear {
@@ -144,6 +190,19 @@ body {
 
 .calculator__button_point {
   grid-area: point;
+}
+
+.footer {
+  padding: 2em 1em;
+  text-align: center;
+}
+
+.footer p:nth-of-type(2) {
+  margin-top: 0.5rem;
+}
+
+.footer a {
+  color: hsla(0, 0%, 100%, 1);
 }
 
 /* UTILITY CLASSES */

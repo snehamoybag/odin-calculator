@@ -1,126 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Simple Calculator</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
-      rel="stylesheet"
-    />
-    <!-- css -->
-    <link href="./style.css" rel="stylesheet" />
-    <!-- Javascript -->
-    <script src="./index.js" defer></script>
-  </head>
 
-  <body>
-    <header class="header"></header>
-    <main class="main">
-      <div class="calculator">
-        <div class="calculator__display">
-          <label for="prev-equation" class="calculator__display_label">
-            <span class="sr-only">Previous Equation</span>
-            <input
-              type="text"
-              id="prev-equation"
-              class="calculator__display_equation"
-              readonly
-            />
-          </label>
-          <label for="current-equation" class="calculator__display_label">
-            <span class="sr-only">Current Equation</span>
-            <input
-              type="text"
-              id="current-equation"
-              class="calculator__display_result"
-              readonly
-            />
-          </label>
-        </div>
-        <div id="buttons" class="calculator__buttons">
-          <button id="all-clear" class="calculator__button_clear">AC</button>
-          <button id="delete" class="calculator__button_undo">DEL</button>
-          <button
-            data-type="operator"
-            value="÷"
-            class="calculator__button_divide"
-          >
-            ÷
-          </button>
-          <button
-            data-type="operator"
-            value="×"
-            class="calculator__button_multiply"
-          >
-            ×
-          </button>
-          <button
-            data-type="operator"
-            value="-"
-            class="calculator__button_substract"
-          >
-            -
-          </button>
-          <button data-type="operator" value="+" class="calculator__button_add">
-            +
-          </button>
-          <button id="equal" class="calculator__button_equal">=</button>
-          <button data-type="number" value="1" class="calculator__button_num1">
-            1
-          </button>
-          <button data-type="number" value="2" class="calculator__button_num2">
-            2
-          </button>
-          <button data-type="number" value="3" class="calculator__button_num3">
-            3
-          </button>
-          <button data-type="number" value="4" class="calculator__button_num4">
-            4
-          </button>
-          <button data-type="number" value="5" class="calculator__button_num5">
-            5
-          </button>
-          <button data-type="number" value="6" class="calculator__button_num6">
-            6
-          </button>
-          <button data-type="number" value="7" class="calculator__button_num7">
-            7
-          </button>
-          <button data-type="number" value="8" class="calculator__button_num8">
-            8
-          </button>
-          <button data-type="number" value="9" class="calculator__button_num9">
-            9
-          </button>
-          <button data-type="number" value="0" class="calculator__button_num0">
-            0
-          </button>
-          <button data-type="number" value="." class="calculator__button_point">
-            .
-          </button>
-        </div>
+<head>
+  <title>Simple Calculator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <!-- css -->
+  <link href="./style.css" rel="stylesheet" />
+  <!-- Javascript -->
+  <script src="./index.js" defer></script>
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="sr-only">Basic Calculator</h1>
+  </header>
+  <main class="main">
+    <div class="calculator">
+      <div class="calculator__display">
+        <label for="prev-equation" class="calculator__display_label">
+          <span class="sr-only">Previous Equation</span>
+          <input type="text" id="prev-equation" class="calculator__display_prev-equation" readonly />
+        </label>
+        <label for="current-equation" class="calculator__display_label">
+          <span class="sr-only">Current Equation</span>
+          <input type="text" id="current-equation" class="calculator__display_current-equation" readonly />
+        </label>
       </div>
-    </main>
-    <footer class="footer">
-      <p>
-        Coded by
-        <a href="https://github.com/snehamoybag" target="_blank"
-          >Snehamoy Bag</a
-        >
-      </p>
-      <p>
-        Project by
-        <a
-          href="https://www.theodinproject.com/dashboard"
-          rel="noopener noreferrer"
-          target="_blank"
-          >The Odin Project</a
-        >
-      </p>
-    </footer>
-  </body>
+      <div id="buttons" class="calculator__buttons">
+        <button id="all-clear" class="calculator__button_clear">AC</button>
+        <button id="delete" class="calculator__button_undo">DEL</button>
+        <button data-type="operator" value="÷" class="calculator__button_divide">
+          ÷
+        </button>
+        <button data-type="operator" value="×" class="calculator__button_multiply">
+          ×
+        </button>
+        <button data-type="operator" value="-" class="calculator__button_substract">
+          -
+        </button>
+        <button data-type="operator" value="+" class="calculator__button_add">
+          +
+        </button>
+        <button id="equal" class="calculator__button_equal">=</button>
+        <button data-type="number" value="1" class="calculator__button_num1">
+          1
+        </button>
+        <button data-type="number" value="2" class="calculator__button_num2">
+          2
+        </button>
+        <button data-type="number" value="3" class="calculator__button_num3">
+          3
+        </button>
+        <button data-type="number" value="4" class="calculator__button_num4">
+          4
+        </button>
+        <button data-type="number" value="5" class="calculator__button_num5">
+          5
+        </button>
+        <button data-type="number" value="6" class="calculator__button_num6">
+          6
+        </button>
+        <button data-type="number" value="7" class="calculator__button_num7">
+          7
+        </button>
+        <button data-type="number" value="8" class="calculator__button_num8">
+          8
+        </button>
+        <button data-type="number" value="9" class="calculator__button_num9">
+          9
+        </button>
+        <button data-type="number" value="0" class="calculator__button_num0">
+          0
+        </button>
+        <button data-type="number" value="." class="calculator__button_point">
+          .
+        </button>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <p>
+      Coded by
+      <a href="https://github.com/snehamoybag" target="_blank">Snehamoy Bag</a>
+    </p>
+    <p>
+      Project by
+      <a href="https://www.theodinproject.com/dashboard" rel="noopener noreferrer" target="_blank">The Odin Project</a>
+    </p>
+  </footer>
+</body>
+
 </html>
