@@ -34,7 +34,6 @@ function Caluclator() {
       default:
         return;
     }
-
     currentOperand = result;
     prevOperand = "";
     operator = "";
@@ -64,7 +63,15 @@ function Caluclator() {
     currentOperand = "";
   };
 
-  this.delete = () => { };
+  this.delete = () => {
+    if (currentOperand === "" && prevOperand === "" && operator === "") return;
+    if (currentOperand === "" && prevOperand !== "" && operator !== "") {
+      currentOperand = prevOperand + operator;
+      prevOperand = "";
+      operator = "";
+    }
+    currentOperand = currentOperand.toString().slice(0, -1);
+  };
 
   this.allClear = () => {
     currentOperand = "";
@@ -99,6 +106,11 @@ buttons.operators.forEach((button) => {
 
 buttons.equal.addEventListener("click", () => {
   calculator.operate();
+  calculator.updateDisplay();
+});
+
+buttons.delete.addEventListener("click", () => {
+  calculator.delete();
   calculator.updateDisplay();
 });
 
