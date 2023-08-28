@@ -36,7 +36,9 @@ function Caluclator() {
       default:
         return;
     }
-    currentOperand = result;
+    currentOperand = result.toString().includes(".") // check if result is a float
+      ? (Math.trunc(result * 100) / 100).toString() // rounds the result to 2 deciamal places
+      : result.toString();
     prevOperand = "";
     operator = "";
   };
