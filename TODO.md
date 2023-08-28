@@ -1,3 +1,3 @@
 # Todo List
 
-- let user input negative numbers
+- add keyboard support
