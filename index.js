@@ -8,9 +8,7 @@ function Caluclator() {
   this.operate = () => {
     const leftSideOperandNum = parseFloat(prevOperand);
     const rigthSideOperandNum = parseFloat(currentOperand);
-
     if (isNaN(leftSideOperandNum) || isNaN(rigthSideOperandNum)) return;
-
     let result;
     switch (operator) {
       case "+":
@@ -37,7 +35,6 @@ function Caluclator() {
 
   this.updateDisplay = () => {
     currentEquationEl.value = currentOperand;
-
     if (operator !== "") {
       prevEquationEl.value = prevOperand + operator;
     } else {
@@ -57,18 +54,15 @@ function Caluclator() {
     } else if (currentOperand === "" && operatorValue !== "-") {
       return;
     }
-
     if (currentOperand === "." || currentOperand === "-") return;
-
     if (
       prevOperand !== "" &&
       operator === "÷" &&
-      parseInt(currentOperand) === 0
+      parseFloat(currentOperand) === 0
     ) {
       alert("Error! 0 cannot be the divisor.");
       return;
     }
-
     this.operate();
     operator = operatorValue;
     prevOperand = currentOperand;
