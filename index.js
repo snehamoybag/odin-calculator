@@ -11,11 +11,6 @@ function Caluclator() {
 
     if (isNaN(leftSideOperandNum) || isNaN(rigthSideOperandNum)) return;
 
-    if (operator === "÷" && rigthSideOperandNum === 0) {
-      alert("Error! 0 cannot be the divisor.");
-      return;
-    }
-
     let result;
     switch (operator) {
       case "+":
@@ -42,6 +37,7 @@ function Caluclator() {
 
   this.updateDisplay = () => {
     currentEquationEl.value = currentOperand;
+
     if (operator !== "") {
       prevEquationEl.value = prevOperand + operator;
     } else {
@@ -64,9 +60,16 @@ function Caluclator() {
 
     if (currentOperand === "." || currentOperand === "-") return;
 
-    if (prevOperand !== "") {
-      this.operate();
+    if (
+      prevOperand !== "" &&
+      operator === "÷" &&
+      parseInt(currentOperand) === 0
+    ) {
+      alert("Error! 0 cannot be the divisor.");
+      return;
     }
+
+    this.operate();
     operator = operatorValue;
     prevOperand = currentOperand;
     currentOperand = "";
